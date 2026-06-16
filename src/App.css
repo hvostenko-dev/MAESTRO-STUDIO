@@ -1,3 +1,13 @@
+
+
+/* === ИСПРАВЛЕННЫЙ ВАРИАНТ В ГЛОБАЛЬНОМ СТИЛЕ === */
+* {
+  box-sizing: border-box;
+  /* Убраны transform и box-shadow, чтобы не ломать JS-анимации */
+  transition: background-color var(--transition-speed) ease,
+  color var(--transition-speed) ease,
+  border-color var(--transition-speed) ease;
+}
 /* ========= Глобальные переменные (тёмная тема + акцент) ========= */
 :root {
   --clr-accent: #00d2ff; /* Голубой акцент */

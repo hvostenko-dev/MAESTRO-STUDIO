@@ -1,3 +1,4 @@
+/* ===================== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ===================== */
 :root {
   --clr-bg-dark: #000000;
   --clr-bg-dark-2: #000000;
@@ -32,13 +33,18 @@
           radial-gradient(920px 560px at 82% -2%, rgba(195, 163, 255, 0.12), transparent 54%),
           radial-gradient(700px 420px at 50% 8%, rgba(255, 255, 255, 0.025), transparent 62%),
           linear-gradient(180deg, #000000 0%, #000000 100%);
-  padding:
-          clamp(72px, 8vw, 102px)
-          clamp(14px, 2.2vw, 20px)
-          clamp(84px, 9vw, 128px);
+
+  /* ЖЕСТКИЙ АДАПТИВНЫЙ ОТСТУП СВЕРХУ ДЛЯ ВСЕХ ЭКРАНОВ */
+  padding-top: max(160px, 16vh) !important;
+  padding-left: clamp(14px, 2.2vw, 20px);
+  padding-right: clamp(14px, 2.2vw, 20px);
+  padding-bottom: clamp(84px, 9vw, 128px);
+
   overflow: hidden;
   color: var(--clr-text-primary);
   isolation: isolate;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .hero-wrapper::before {
@@ -344,6 +350,10 @@
 
 /* ===================== MEDIA ===================== */
 @media (max-width: 768px) {
+  .hero-wrapper {
+    padding-top: 130px !important; /* Контролируемый отступ под мобильный навбар */
+  }
+
   .hero__eyebrow {
     margin-bottom: 0.95rem;
     font-size: 0.68rem;
@@ -402,6 +412,10 @@
 }
 
 @media (max-width: 480px) {
+  .hero-wrapper {
+    padding-top: 110px !important;
+  }
+
   .hero__title {
     font-size: clamp(2.1rem, 13vw, 3.45rem);
     letter-spacing: 0.024em;
