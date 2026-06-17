@@ -20,16 +20,38 @@ const Gallery = () => {
 
   return (
     <section id="gallery" className="gallery">
-      <h2 className="gallery__title">{t('gallery.title')}</h2>
-      <div className="gallery__grid">
-        {images.map((src, idx) => (
-          <div key={idx} className="gallery__item">
-            <img
-              src={src}
-              alt={`${t('gallery.altPrefix')} ${idx + 1}`}
-            />
-          </div>
-        ))}
+      <div className="gallery__orb gallery__orb--1" aria-hidden="true" />
+      <div className="gallery__orb gallery__orb--2" aria-hidden="true" />
+      <div className="gallery__grid-bg" aria-hidden="true" />
+
+      <div className="gallery__inner">
+        <div className="gallery__header">
+          <span className="gallery__eyebrow">
+            {t('gallery.eyebrow', 'selected visuals')}
+          </span>
+
+          <h2 className="gallery__title">{t('gallery.title')}</h2>
+
+          <p className="gallery__subtitle">
+            {t(
+              'gallery.subtitle',
+              'A curated look at atmosphere, light, motion, and moments crafted with a cinematic eye.'
+            )}
+          </p>
+        </div>
+
+        <div className="gallery__grid">
+          {images.map((src, idx) => (
+            <div key={idx} className="gallery__item">
+              <img
+                src={src}
+                alt={`${t('gallery.altPrefix')} ${idx + 1}`}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
