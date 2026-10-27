@@ -13,31 +13,6 @@ export default function Hero() {
   const fullText = 'MAESTRO STUDIO';
   const isRtl = i18n.dir(i18n.language) === 'rtl';
 
-  const [displayedText, setDisplayedText] = useState('');
-  const [index, setIndex] = useState(0);
-  const [doneTyping, setDoneTyping] = useState(EFFECT !== 'type');
-
-  useEffect(() => {
-    if (EFFECT !== 'type') return;
-
-    if (prefersReducedMotion) {
-      setDisplayedText(fullText);
-      setDoneTyping(true);
-      return;
-    }
-
-    if (index < fullText.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + fullText[index]);
-        setIndex((i) => i + 1);
-      }, 55);
-
-      return () => clearTimeout(timeout);
-    }
-
-    setDoneTyping(true);
-  }, [index, prefersReducedMotion, fullText]);
-
   const letters = useMemo(() => fullText.split(''), [fullText]);
 
   const container = {
@@ -71,83 +46,70 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero-wrapper" dir={isRtl ? 'rtl' : 'ltr'}>
+    <section id="hero" className="hero-wrapper" dir={isRtl ? 'rtl' : 'ltr'}>
       <div className="hero-bg-orb hero-bg-orb--1" aria-hidden="true" />
       <div className="hero-bg-orb hero-bg-orb--2" aria-hidden="true" />
-      <div className="hero-bg-glow" aria-hidden="true" />
+      <div className="hero-bg-spotlight" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
 
       <motion.div
         className="hero"
-        initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 60 }}
+        initial={{ opacity: 0, y: 36 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
+        transition={{ duration: 0.65, ease: 'easeOut' }}
       >
         <motion.div
-          className="hero__eyebrow"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
+          className="hero__meta-row"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.45 }}
+          transition={{ delay: 0.08, duration: 0.45 }}
         >
-          {t(
-            'hero.eyebrow',
-            'cinematic visuals • premium production • bold identity'
-          )}
+          <span className="hero__eyebrow">
+            <IoSparklesOutline className="hero__eyebrow-icon" aria-hidden="true" />
+            {t('hero.eyebrow', 'cinematic visuals • premium production • bold identity')}
+          </span>
         </motion.div>
 
-        {EFFECT === 'stagger' ? (
-          <motion.h1
-            className="hero__title"
-            variants={container}
-            initial="hidden"
-            animate="visible"
-            aria-label={fullText}
-            dir="ltr"
-          >
-            <span className="hero__title-line">
-              {letters.slice(0, 7).map((ch, i) => (
-                <motion.span
-                  className="letter"
-                  key={`maestro-${ch}-${i}`}
-                  variants={child}
-                  aria-hidden="true"
-                >
-                  {ch}
-                </motion.span>
-              ))}
-            </span>
+        <motion.h1
+          className="hero__title"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          aria-label={fullText}
+          dir="ltr"
+        >
+          <span className="hero__title-line">
+            {letters.slice(0, 7).map((ch, i) => (
+              <motion.span
+                className="letter"
+                key={`maestro-${ch}-${i}`}
+                variants={child}
+                aria-hidden="true"
+              >
+                {ch}
+              </motion.span>
+            ))}
+          </span>
 
-            <span className="hero__title-line">
-              {letters.slice(8).map((ch, i) => (
-                <motion.span
-                  className="letter"
-                  key={`studio-${ch}-${i}`}
-                  variants={child}
-                  aria-hidden="true"
-                >
-                  {ch}
-                </motion.span>
-              ))}
-            </span>
-          </motion.h1>
-        ) : (
-          <motion.h1
-            className={`hero__title typing-title ${doneTyping ? 'done' : ''}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.4 }}
-            dir="ltr"
-          >
-            <span className="hero__title-fixed">{displayedText}</span>
-            {!prefersReducedMotion && <span className="cursor">|</span>}
-          </motion.h1>
-        )}
+          <span className="hero__title-line hero__title-line--accent">
+            {letters.slice(8).map((ch, i) => (
+              <motion.span
+                className="letter"
+                key={`studio-${ch}-${i}`}
+                variants={child}
+                aria-hidden="true"
+              >
+                {ch}
+              </motion.span>
+            ))}
+          </span>
+        </motion.h1>
 
         <motion.p
           className="hero__lead"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 18 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.55 }}
+          transition={{ delay: 0.38, duration: 0.5 }}
         >
           {t(
             'hero.lead',
@@ -157,79 +119,71 @@ export default function Hero() {
 
         <motion.p
           className="hero__text"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 18 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.5, duration: 0.55 }}
         >
-          {t(
-            'hero.text',
-            'We create cinematic photo and video production, visual concepts, brand atmosphere, and content that makes projects look powerful, clean, and unforgettable.'
-          )}
-        </motion.p>
-
-        <motion.p
-          className="hero__subtext"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.72, duration: 0.55 }}
-        >
-          {t(
-            'hero.subtext',
-            'From idea to final frame — every detail is built with style, rhythm, light, and emotion.'
-          )}
-        </motion.p>
-
-        <motion.p
-          className="hero__note"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.82, duration: 0.5 }}
-        >
-          {t(
-            'hero.note',
-            'For brands, artists, creators, events, and businesses that want their visuals to feel premium from the first second.'
-          )}
+          {t('hero.text')}
         </motion.p>
 
         <motion.div
           className="hero__highlights"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 14 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.92, duration: 0.5 }}
+          transition={{ delay: 0.62, duration: 0.5 }}
         >
           <span className="hero__chip">
             <span className="hero__chip-dot" aria-hidden="true" />
             {t('hero.highlight1', 'creative direction')}
           </span>
-
           <span className="hero__chip">
+            <span className="hero__chip-dot" aria-hidden="true" />
             {t('hero.highlight2', 'photo & video production')}
           </span>
-
           <span className="hero__chip">
+            <span className="hero__chip-dot" aria-hidden="true" />
             {t('hero.highlight3', 'brand atmosphere')}
           </span>
         </motion.div>
 
         <motion.div
-          className="hero__cta-wrap"
-          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 18 }}
+          className="hero__actions"
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.08, duration: 0.45 }}
+          transition={{ delay: 0.75, duration: 0.45 }}
         >
           <motion.a
             href={t('hero.ctaLink')}
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-cta-button"
-            whileHover={
-              prefersReducedMotion ? undefined : { scale: 1.035, y: -3 }
-            }
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
+            className="hero-cta-button hero-cta-button--primary"
+            whileHover={prefersReducedMotion ? undefined : { scale: 1.025, y: -2 }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
           >
-            <FaWhatsapp className="hero__whatsapp-icon" />
-            {t('hero.button')}
+            <FaWhatsapp className="hero__whatsapp-icon" aria-hidden="true" />
+            <span>{t('hero.button')}</span>
           </motion.a>
+
+          <Link
+            to="gallery"
+            smooth
+            offset={-72}
+            duration={550}
+            className="hero-cta-button hero-cta-button--secondary"
+          >
+            <span>{t('hero.secondaryButton', 'Explore Our Work')}</span>
+            <IoArrowDownOutline className="hero__secondary-icon" aria-hidden="true" />
+          </Link>
+        </motion.div>
+
+        <motion.div
+          className="hero__location"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.92, duration: 0.5 }}
+        >
+          <IoLocationOutline className="hero__location-icon" aria-hidden="true" />
+          <span>{t('hero.locationBadge', 'Ashdod • K-Towers, 4th Floor')}</span>
         </motion.div>
       </motion.div>
     </section>

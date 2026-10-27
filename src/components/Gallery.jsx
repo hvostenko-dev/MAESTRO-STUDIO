@@ -32,21 +32,15 @@ const Gallery = () => {
     setSelectedIndex(null);
   }, []);
 
-  const showPrev = useCallback(
-    (e) => {
-      if (e) e.stopPropagation();
-      setSelectedIndex((prev) => (prev === null ? null : (prev - 1 + images.length) % images.length));
-    },
-    []
-  );
+  const showPrev = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setSelectedIndex((prev) => (prev === null ? null : (prev - 1 + images.length) % images.length));
+  }, []);
 
-  const showNext = useCallback(
-    (e) => {
-      if (e) e.stopPropagation();
-      setSelectedIndex((prev) => (prev === null ? null : (prev + 1) % images.length));
-    },
-    []
-  );
+  const showNext = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setSelectedIndex((prev) => (prev === null ? null : (prev + 1) % images.length));
+  }, []);
 
   useEffect(() => {
     if (selectedIndex === null) return;
@@ -62,37 +56,44 @@ const Gallery = () => {
   }, [selectedIndex, closeLightbox, showPrev, showNext]);
 
   return (
-    <section id="gallery" className="gallery">
-      <div className="gallery__orb gallery__orb--1" aria-hidden="true" />
-      <div className="gallery__orb gallery__orb--2" aria-hidden="true" />
-      <div className="gallery__grid-bg" aria-hidden="true" />
-
-      <div className="gallery__inner">
-        <div className="gallery__header">
-          <span className="gallery__eyebrow">
-            {t('gallery.eyebrow', 'selected visuals')}
-          </span>
-
-          <h2 className="gallery__title">{t('gallery.title')}</h2>
-
-          <p className="gallery__subtitle">
-            {t(
-              'gallery.subtitle',
-              'A curated look at atmosphere, light, motion, and moments crafted with a cinematic eye.'
-            )}
-          </p>
+    <section id="gallery" className="gallery" dir={isRtl ? 'rtl' : 'ltr'}>
+      <div className="gallery__container">
+        <div className="gallery__eyebrow">
+          {t('gallery.eyebrow', 'selected frames • studio sessions • visual craft')}
         </div>
+
+        <h2 className="gallery__title">{t('gallery.title', 'Our Work')}</h2>
+
+        <p className="gallery__subtitle">
+          {t(
+            'gallery.subtitle',
+            'A look inside our studio sessions, lighting setups, portrait shoots, and production moments.'
+          )}
+        </p>
 
         <div className="gallery__grid">
           {images.map((src, idx) => (
-            <div key={idx} className="gallery__item">
+            <motion.button
+              key={idx}
+              type="button"
+              className="gallery__item"
+              onClick={() => setSelectedIndex(idx)}
+              aria-label={`${t('gallery.viewImage', 'View full screen')}: ${t('gallery.altPrefix')} ${idx + 1}`}
+              whileHover={prefersReducedMotion ? undefined : { y: -6 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+            >
               <img
                 src={src}
                 alt={`${t('gallery.altPrefix')} ${idx + 1}`}
                 loading="lazy"
                 decoding="async"
               />
-            </div>
+              <div className="gallery__overlay" aria-hidden="true">
+                <span className="gallery__zoom-badge">
+                  <IoExpandOutline />
+                </span>
+              </div>
+            </motion.button>
           ))}
         </div>
       </div>
