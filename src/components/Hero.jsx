@@ -1,15 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-scroll';
 import { FaWhatsapp } from 'react-icons/fa';
+import { IoLocationOutline, IoArrowDownOutline, IoSparklesOutline } from 'react-icons/io5';
 import './Hero.css';
-import './FloatingWhatsapp.css';
 
 export default function Hero() {
   const { t, i18n } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
 
-  const EFFECT = 'stagger';
   const fullText = 'MAESTRO STUDIO';
   const isRtl = i18n.dir(i18n.language) === 'rtl';
 
@@ -50,8 +50,8 @@ export default function Hero() {
         : {
             duration: 0.5,
             ease: 'easeOut',
-            staggerChildren: 0.045,
-            delayChildren: 0.15,
+            staggerChildren: 0.04,
+            delayChildren: 0.12,
           },
     },
   };
@@ -59,14 +59,14 @@ export default function Hero() {
   const child = {
     hidden: {
       opacity: 0,
-      y: prefersReducedMotion ? 0 : 24,
+      y: prefersReducedMotion ? 0 : 28,
       rotateX: prefersReducedMotion ? 0 : 65,
     },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
-      transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -198,6 +198,7 @@ export default function Hero() {
           transition={{ delay: 0.92, duration: 0.5 }}
         >
           <span className="hero__chip">
+            <span className="hero__chip-dot" aria-hidden="true" />
             {t('hero.highlight1', 'creative direction')}
           </span>
 

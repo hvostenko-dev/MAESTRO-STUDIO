@@ -1,9 +1,7 @@
-// src/App.js
-import React, { useEffect } from 'react'; // Импортируем useEffect
-import { useTranslation } from 'react-i18next'; // Импортируем useTranslation
+import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import './i18n';
-import './components/Responsive.css';
 
 import Navbar from './components/NavBar';
 import Hero from './components/Hero';
@@ -14,26 +12,31 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const { i18n } = useTranslation(); // Инициализируем хук useTranslation
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    document.documentElement.dir = i18n.dir(i18n.language);
-  }, [i18n.language, i18n]); // добавляем i18n в зависимости
-  
+    const lang = i18n.resolvedLanguage || i18n.language || 'en';
+    document.documentElement.dir = i18n.dir(lang);
+    document.documentElement.lang = lang;
+  }, [i18n.resolvedLanguage, i18n.language, i18n]);
+
   return (
-    <div>
+    <div className="app-shell">
+      <a href="#main-content" className="skip-to-content">
+        {t('accessibility.skipToContent', 'Skip to main content')}
+      </a>
+
       <Navbar />
 
-    
-      {/* Основные секции сайта */}
-      <Hero />
-      <Gallery />
-      <Services />
-      <FAQ />
-      <Contact />
+      <main id="main-content">
+        <Hero />
+        <Gallery />
+        <Services />
+        <FAQ />
+        <Contact />
+      </main>
 
       <Footer />
-      
     </div>
   );
 }

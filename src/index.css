@@ -1,167 +1,129 @@
-/* В твоем главном CSS файле (например, src/index.css или src/components/Responsive.css) */
+/* ==========================================================================
+   GLOBAL DESIGN SYSTEM & RESET — MAESTRO STUDIO
+   ========================================================================== */
 
-/* === БАЗОВЫЕ RTL ПРАВИЛА === */
-/* Эти правила применяются, когда <html dir="rtl"> активен */
-[dir="rtl"] {
-  direction: rtl;
-  text-align: right; /* По умолчанию весь текст выравнивается по правому краю */
-}
+:root {
+  --clr-bg-dark: #000000;
+  --clr-bg-surface: #0a0a0c;
+  --clr-bg-card: #0c0d10;
 
-/* === АДАПТАЦИЯ ШРИФТОВ ДЛЯ RTL (ИВРИТ) - УВЕЛИЧЕНИЕ РАЗМЕРА === */
-/* Импортируй ивритские шрифты, которые ты выберешь на Google Fonts
-    (например, Rubik, Assistant, Open Sans Hebrew).
-    Убедись, что они импортированы в начале файла! */
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap');
-/* Добавь также импорты для других шрифтов, которые ты используешь в проекте,
-    если они поддерживают иврит. */
+  --clr-text-primary: #ffffff;
+  --clr-text-secondary: #bcc4cf;
+  --clr-text-muted: #8f9bab;
 
-/* Общий размер текста для всего тела сайта на иврите */
-[dir="rtl"] body {
-  font-family: 'Rubik', 'Assistant', sans-serif; /* Ивритские шрифты первыми */
-  font-size: 1.15rem; /* Увеличь базовый размер шрифта, например, на 15% */
-  line-height: 1.8; /* Возможно, увеличить межстрочный интервал для лучшей читаемости */
-}
+  --clr-accent: #8ab4f8;
+  --clr-accent-2: #c3a3ff;
+  --clr-accent-cyan: #00d2ff;
 
-/* Заголовки: Hero Title, Services Title, FAQ Title, Contact Title, Gallery Title */
-[dir="rtl"] .hero-title,
-[dir="rtl"] .services-title,
-[dir="rtl"] .faq-title,
-[dir="rtl"] .contact-title,
-[dir="rtl"] .gallery-title { /* Убедись, что классы правильные */
-  font-size: clamp(3rem, 7.5vw, 5.5rem); /* Увеличил базовые значения для более крупного заголовка */
-  letter-spacing: 0.03em; /* Может быть, чуть уменьшить межбуквенный интервал, если кажется слишком растянутым */
-}
+  --clr-border: rgba(148, 163, 184, 0.16);
+  --clr-border-strong: rgba(148, 163, 184, 0.32);
 
-/* Подзаголовки и основной текст */
-[dir="rtl"] .hero-text,
-[dir="rtl"] .services-rental-features li, /* Или конкретный класс для текста фич */
-[dir="rtl"] .services-production-features li,
-[dir="rtl"] .faq-item .answer, /* Или .faq-item p */
-[dir="rtl"] .contact-text, /* Если у контакта есть общий текстовый класс */
-[dir="rtl"] .footer-text { /* Текст в футере */
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem); /* Увеличил базовый размер */
-  line-height: 1.7;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Anton', 'Inter', system-ui, sans-serif;
+  --font-hebrew: 'Rubik', 'Assistant', sans-serif;
+
+  --navbar-height: 72px;
+  --navbar-height-mobile: 64px;
+
+  --section-py: clamp(4.5rem, 7vw, 6.5rem);
+  --section-px: clamp(1rem, 3vw, 2rem);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --transition-fast: 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-base: 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Навигация */
-[dir="rtl"] .navbar-links a {
-  font-size: 1.1rem; /* Увеличить размер ссылок в навигации */
-  /* Возможно, нужно поменять margin-left на margin-right для отступов между ссылками */
-  margin-left: 0;
-  margin-right: 20px; /* Пример, если ссылки были с margin-left */
-}
-[dir="rtl"] .navbar-links {
-  display: flex;
-  flex-direction: row-reverse; /* Если ссылки выстроены в ряд */
-}
-[dir="rtl"] .navbar-logo {
-  margin-right: auto; /* Лого слева в LTR, справа в RTL */
-  margin-left: 0;
-}
-[dir="rtl"] .navbar-book-btn {
-  margin-left: 0;
-  margin-right: 15px; /* Если кнопка справа от навигации */
-}
-
-
-/* Текст в кнопках */
-[dir="rtl"] .hero-button, /* Или .hero button */
-[dir="rtl"] .contact-button { /* Или .contact button */
-  font-size: 1.2rem; /* Увеличить размер текста в кнопках */
-  padding: 1.2rem 3rem; /* Возможно, потребуется увеличить padding кнопок */
-}
-
-/* FAQ: стрелка должна быть слева от текста вопроса */
-[dir="rtl"] .faq-item .question { /* Замени .question на реальный класс элемента вопроса */
-  flex-direction: row-reverse; /* Меняем порядок элементов внутри flex-контейнера */
-  text-align: right; /* Текст вопроса справа */
-  font-size: clamp(1.1rem, 2.8vw, 1.35rem); /* Увеличить размер вопроса */
-}
-[dir="rtl"] .faq-item .question svg,
-[dir="rtl"] .faq-item .question i { /* Если иконка */
-  margin-left: 0; /* Убираем отступ слева */
-  margin-right: 15px; /* Добавляем отступ справа, чтобы иконка была справа от текста */
-}
-
-/* Секция Услуг: заголовки и текст */
-[dir="rtl"] .services-rental-title, /* И другие service-X-title */
-[dir="rtl"] .services-production-title {
-    font-size: clamp(1.3rem, 3vw, 1.6rem); /* Увеличить размер заголовков сервисов */
-}
-
-/* Футер */
-[dir="rtl"] .footer-text {
-    text-align: right; /* Текст копирайта */
-}
-/* Если в футере колонки, возможно нужно менять их порядок или выравнивание */
-[dir="rtl"] .footer-column { /* Пример */
-    text-align: right;
-}
-[dir="rtl"] .footer-socials { /* Если есть соц. иконки */
-    justify-content: flex-end; /* Выровнять по правому краю */
-}
-[dir="rtl"] .footer-socials a {
-    margin-left: 10px; /* Отступ между иконками */
-    margin-right: 0;
-}
-
-
-/* AccessibilityMenu */
-[dir="rtl"] .accessibility-menu { /* Основной контейнер меню */
-    right: 0; /* Если изначально был слева */
-    left: auto;
-    transform-origin: top right; /* Изменить точку трансформации */
-}
-[dir="rtl"] .accessibility-menu-toggle-button { /* Кнопка переключения */
-    /* Возможно, нужно поменять position/margin */
-}
-[dir="rtl"] .accessibility-menu-option { /* Пункты меню */
-    text-align: right;
-    flex-direction: row-reverse; /* Если есть иконки и текст */
-}
-[dir="rtl"] .accessibility-menu-option svg { /* Иконки в меню */
-    margin-left: 0;
-    margin-right: 10px;
-}
-
-/* --- ИСПРАВЛЕНИЕ БЕЛЫХ ПОЛОС --- */
-/* Убедитесь, что все элементы занимают 100% ширины и нет лишних отступов/полей */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Скрывает горизонтальную прокрутку, если есть */
-  background-color: #000; /* Установим общий фон на черный */
-}
-
-/* Применение черного фона ко всем секциям, если они не имеют своего цвета */
-section, div:not([class*="hero"]):not([class*="navbar"]):not([class*="footer"]) {
-  background-color: #000; /* Примените это к основным контейнерам ваших секций */
-}
-
-/* Если у вас есть контейнеры, которые ограничивают ширину содержимого, но не фон */
-.container { /* Пример класса контейнера, который может быть по центру */
-  max-width: 100%; /* Убедитесь, что контейнер не обрезается */
-  margin: 0 auto;
-  padding: 0; /* Удалите лишний padding */
-}
-
-/* Проверьте, нет ли у изображений или других медиа-элементов лишних margin/padding */
-img, video {
-  display: block; /* Избежать проблем с inline-block */
-  max-width: 100%;
-  height: auto;
-}
-
-/* Убедитесь, что в Hero-секции нет белых полей по краям */
-.hero-section { /* Или как у вас называется основная секция */
-  width: 100%;
-  padding: 0;
-  margin: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* Сброс стилей для любых элементов, которые могут вызывать белую полосу */
-* {
-  box-sizing: border-box; /* Это очень важно для правильной работы ширины и padding */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text-primary);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL / Hebrew typography adaptation */
+[dir='rtl'] body {
+  font-family: var(--font-hebrew);
+}
+
+main,
+section {
+  background-color: var(--clr-bg-dark);
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Skip to main content accessibility link */
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.25rem;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 800;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* Shared Section Header Eyebrow */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto 1rem;
+  padding: 0.68rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }

@@ -18,11 +18,20 @@
       "highlight2": "photo & video production",
       "highlight3": "brand atmosphere",
       "button": "Book Now",
+      "secondaryButton": "Explore Our Work",
+      "locationBadge": "Ashdod • K-Towers, 4th Floor",
+      "scrollDown": "Scroll to explore",
       "ctaLink": "https://wa.me/972524388967"
     },
     "gallery": {
+      "eyebrow": "selected frames • studio sessions • visual craft",
       "title": "Our Work",
-      "altPrefix": "Work"
+      "subtitle": "A look inside our studio sessions, lighting setups, portrait shoots, and production moments.",
+      "altPrefix": "Studio session",
+      "viewImage": "View full screen",
+      "closeModal": "Close preview",
+      "prevImage": "Previous image",
+      "nextImage": "Next image"
     },
     "services": {
       "title": "Our Services",
@@ -46,7 +55,9 @@
       }
     },
     "faq": {
+      "eyebrow": "clear answers • smooth process • zero friction",
       "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know before booking — simple, clear, and built to save time.",
       "items": [
         {
           "q": "How to book?",
@@ -67,14 +78,16 @@
       ]
     },
     "contact": {
+      "eyebrow": "fast response • direct access • premium support",
       "title": "Contacts",
+      "subtitle": "Reach out directly for bookings, questions, location details, and production inquiries.",
       "whatsappLabel": "WhatsApp",
       "whatsappText": "+972 52 438 8967",
       "addressLabel": "Address",
       "addressText": "Ashdod, Sderot Yerushalayim 18, K-Towers, 4th Floor"
     },
     "footer": {
-      "text": "© 2025 MAESTROSTUDIO. All rights reserved."
+      "text": "© 2026 MAESTROSTUDIO. All rights reserved."
     },
     "accessibility": {
       "toggle": "Accessibility",
@@ -110,11 +123,20 @@
       "highlight2": "фото и видеопродакшн",
       "highlight3": "атмосфера бренда",
       "button": "Записаться",
+      "secondaryButton": "Смотреть работы",
+      "locationBadge": "Ашдод • K-Towers, 4 этаж",
+      "scrollDown": "Листайте вниз",
       "ctaLink": "https://wa.me/972524388967"
     },
     "gallery": {
+      "eyebrow": "избранные кадры • студийные сессии • визуальный стиль",
       "title": "Наши работы",
-      "altPrefix": "Работа"
+      "subtitle": "Взгляд изнутри на наши съёмки, световые схемы, портретные сессии и атмосферу продакшна.",
+      "altPrefix": "Студийная работа",
+      "viewImage": "Открыть на весь экран",
+      "closeModal": "Закрыть просмотр",
+      "prevImage": "Предыдущее фото",
+      "nextImage": "Следующее фото"
     },
     "services": {
       "title": "Наши услуги",
@@ -138,7 +160,9 @@
       }
     },
     "faq": {
+      "eyebrow": "чёткие ответы • понятный процесс • без лишних сложностей",
       "title": "Часто задаваемые вопросы",
+      "subtitle": "Всё, что нужно знать перед бронированием — просто, прозрачно и без потери времени.",
       "items": [
         {
           "q": "Как записаться?",
@@ -159,14 +183,16 @@
       ]
     },
     "contact": {
+      "eyebrow": "быстрый ответ • прямая связь • премиум поддержка",
       "title": "Контакты",
+      "subtitle": "Свяжитесь с нами напрямую для бронирования студии, уточнения деталей локации и вопросов по продакшну.",
       "whatsappLabel": "WhatsApp",
       "whatsappText": "+972 52 438 8967",
       "addressLabel": "Адрес",
       "addressText": "Ашдод, Sderot Yerushalayim 18, здание K-Towers, 4 этаж"
     },
     "footer": {
-      "text": "© 2025 MAESTROSTUDIO. Все права защищены."
+      "text": "© 2026 MAESTROSTUDIO. Все права защищены."
     },
     "accessibility": {
       "toggle": "Доступность",
@@ -202,11 +228,20 @@
       "highlight2": "הפקת צילום ווידאו",
       "highlight3": "אווירת מותג",
       "button": "להזמין",
+      "secondaryButton": "לגלריית העבודות",
+      "locationBadge": "אשדוד • K-Towers, קומה 4",
+      "scrollDown": "גלול למטה",
       "ctaLink": "https://wa.me/972524388967"
     },
     "gallery": {
+      "eyebrow": "רגעים נבחרים • צילומי סטודיו • אומנות ויזואלית",
       "title": "העבודות שלנו",
-      "altPrefix": "עבודה"
+      "subtitle": "הצצה אל תוך סשנים בסטודיו, מערכי תאורה, צילומי פורטרט ורגעי הפקה.",
+      "altPrefix": "עבודה בסטודיו",
+      "viewImage": "הצג במסך מלא",
+      "closeModal": "סגור תצוגה",
+      "prevImage": "תמונה קודמת",
+      "nextImage": "תמונה הבאה"
     },
     "services": {
       "title": "השירותים שלנו",
@@ -230,7 +265,9 @@
       }
     },
     "faq": {
+      "eyebrow": "תשובות ברורות • תהליך חלק • אפס חיכוך",
       "title": "שאלות נפוצות",
+      "subtitle": "כל מה שצריך לדעת לפני שמזמינים — פשוט, ברור ובנוי לחסוך זמן.",
       "items": [
         {
           "q": "איך להזמין?",
@@ -251,14 +288,16 @@
       ]
     },
     "contact": {
+      "eyebrow": "מענה מהיר • גישה ישירה • שירות פרימיום",
       "title": "צור קשר",
+      "subtitle": "פנו אלינו ישירות להזמנות, שאלות, פרטי הגעה וייעוץ הפקה.",
       "whatsappLabel": "WhatsApp",
       "whatsappText": "+972 52 438 8967",
       "addressLabel": "כתובת",
       "addressText": "אשדוד, Sderot Yerushalayim 18, מבנה K-Towers, קומה 4"
     },
     "footer": {
-      "text": "© 2025 MAESTROSTUDIO. כל הזכויות שמורות."
+      "text": "© 2026 MAESTROSTUDIO. כל הזכויות שמורות."
     },
     "accessibility": {
       "toggle": "נגישות",
