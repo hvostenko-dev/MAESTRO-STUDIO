@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, animateScroll as scroll } from 'react-scroll';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from './LanguageSwitcher.jsx';
+import LanguageSwitcher from './LanguageSwitcher';
 import './NavBar.css';
 
 const Navbar = () => {
@@ -13,7 +13,10 @@ const Navbar = () => {
   const burgerRef = useRef(null);
 
   const closeMenu = () => setMenuOpen(false);
-  const isRtl = i18n.dir(i18n.language) === 'rtl';
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'ru')
+    .substring(0, 2)
+    .toLowerCase();
+  const isRtl = i18n.dir(currentLang) === 'rtl';
 
   useEffect(() => {
     const onScroll = () => {

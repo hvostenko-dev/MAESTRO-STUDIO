@@ -11,7 +11,10 @@ export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   const fullText = 'MAESTRO STUDIO';
-  const isRtl = i18n.dir(i18n.language) === 'rtl';
+  const currentLang = (i18n.resolvedLanguage || i18n.language || 'ru')
+    .substring(0, 2)
+    .toLowerCase();
+  const isRtl = i18n.dir(currentLang) === 'rtl';
 
   const letters = useMemo(() => fullText.split(''), [fullText]);
 

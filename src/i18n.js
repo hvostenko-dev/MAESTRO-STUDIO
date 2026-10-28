@@ -12,11 +12,13 @@ i18n
       ru: { translation: rawTranslations.ru },
       he: { translation: rawTranslations.he },
     },
-    fallbackLng: 'en',
+    fallbackLng: 'ru',
     supportedLngs: ['en', 'ru', 'he'],
+    load: 'languageOnly',
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
     },
     interpolation: { escapeValue: false },
   });
